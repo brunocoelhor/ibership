@@ -447,31 +447,17 @@ Sistemas multiagentes, paralelismo, arquitetura.
 
 
 \section{Introdução}
-    \IEEEPARstart{C}{om} o aumento na demanda da tecnologia é cada vez maior, a necessidade de um melhor \textit{hardware} para execução de tarefas complexas. Processador, memória e conjunto de instruções são alguns exemplos desse \textit{upgrade} que os sistemas computacionais requerem para um melhor processamento e execução de tarefas.
+    \IEEEPARstart{C}{om} o aumento na demanda da tecnologia é cada vez maior, a necessidade de um melhor \textit{hardware} para execução de tarefas complexas. Processador, memória e conjunto de instruções são alguns exemplos neste \textit{upgrade} que os sistemas computacionais requerem para um melhor processamento e execução de tarefas.
         
-    Sistemas de \textit{softwares} baseados em agentes são utilizados em um grande número de aplicações, sendo seu domínio altamente dinâmico \cite{evertsz2015using}. Como por exemplo, na robótica, na fabricação automatizada, na gestão financeira, entre outros.
+    Sistemas de \textit{softwares} baseados em agentes são utilizados em um grande número de aplicações, sendo seu domínio altamente dinâmico \cite{evertsz2015using}. Como por exemplo, na robótica, na fabricação automatizada, na gestão financeira, entre outros. Segundo \cite{ferber1991tutorial}, um agente é uma entidade real ou virtual, imersa num ambiente onde é capaz de agir, que dispõe de uma capacidade de percepção e de representação parcial deste ambiente, que pode se comunicar com outros agentes, possuindo um comportamento autônomo, consequência de suas observações, de seu conhecimento e das suas interações com os outros agentes.
         
-    O objetivo desse artigo é analisar o tempo de execução de agentes, quando executados em computadores equipados com diferentes processadores da linha Intel Corporation. Para tal, este artigo está organizado da seguinte maneira: a Seção  2 introduz os conceitos necessários para entendimento do trabalho. Na Seção 3, é apresentado o estudo de caso e sua execução. Na Seção 4 são apresentados os resultados obtidos desse estudo e finalmente, a Seção 5 expõe a conclusão do trabalho.
-
-\section{Fundamentação Teórica}
-
-    %A fundamentação teórica de um artigo, de acordo com Marconi e Lakatos \cite{lakatos2010fundamentos}, também chamada de fundamentação lógica tem como finalidade expor e demonstrar os conceitos relacionados ao trabalho. Atribui-se ao ato de explicar, esclarecer, argumentar,  analisar e compreender conceitos que estejam diretamente relacionados á pesquisa.
+        Em \cite{bellifemine2007developing} é definido que um agente é autônomo por atuar sem intervenção direta, tem o controle de suas ações, ele é social por cooperar com seres humanos e outros agentes a fim de alcançar os seus objetivos e um agente é reativo porque ele percebe seu ambiente e responde a estes estímulos que ocorrem em seu entorno. Em resumo, as principais características de um agente é a percepção de seu ambiente, possuir um conjunto de ações que podem ser executadas podendo assim modificar o ambiente \cite{bordini2007programming}.
         
-    %Nesta Seção, portanto, apresentam-se definições de termos citados ao longo do artigo.
-
-        \subsection{Agentes}
-        Dependendo do contexto em que são apresentados, existem várias definições para um agente. Segundo \cite{ferber1991tutorial}, um agente é uma entidade real ou virtual, imersa num ambiente onde é capaz de agir, que dispõe de uma capacidade de percepção e de representação parcial deste ambiente, que pode se comunicar com outros agentes, possuindo um comportamento autônomo, consequência de suas observações, de seu conhecimento e das suas interações com os outros agentes.
-        
-        Em \cite{bellifemine2007developing} é definido que um agente é autônomo por atuar sem intervenção direta, tem o controle de suas ações, ele é social por cooperar com seres humanos e outros agentes a fim de alcançar os seus objetivos e um agente é reativo proque ele percebe seu ambiente e responde a estes estímulos que ocorre em seu entorno. Em resumo, as principais características de um agente é a percepção de seu ambiente, possuir um conjunto de ações que podem ser executadas podendo assim modificar o ambiente \cite{bordini2007programming}.
-        
-        
-        Os agentes podem ser divididos em duas categorias: reativos e cognitivos. Agentes reativos possuem comportamentos simples, não possuindo nenhum modelo do mundo onde estão atuando e possuem comportamento estímulo-resposta. Agentes cognitivos possuem comportamentos complexos onde eles deliberam e negociam suas ações com os outros agentes. Na construção de agentes cognitivos em sistemas multiagentes é importante mencionar alguns aspectos, como: percepções; ações; comunicação; representação; motivação; deliberação; raciocínio e aprendizagem.
-		\subsection{Arquitetura BDI}
-        Uma das arquiteturas principais de agentes é baseada em um modelo de cognição conhecido como BDI (\textit{beliefs}, \textit{desires} e \textit{intentions}), no português: as crenças, os desejos e as intenções. Especificamente, essa arquitetura surgiu por volta da década de 80, com base na teoria do filósofo Michael Bratman \cite{sichman2003raciocinio}.
+        Os agentes podem ser divididos em duas categorias: reativos e cognitivos. Agentes reativos possuem comportamentos simples, não possuindo nenhum modelo do mundo onde estão atuando e possuem comportamento estímulo-resposta. Agentes cognitivos possuem comportamentos complexos onde eles deliberam e negociam suas ações com os outros agentes. Uma das arquiteturas cognitivas de agentes é conhecido como BDI (\textit{beliefs}, \textit{desires} e \textit{intentions}), no português: as crenças, os desejos e as intenções. Especificamente, essa arquitetura surgiu por volta da década de 80, com base na teoria do filósofo Michael Bratman \cite{sichman2003raciocinio}.
 
         Essa arquitetura é proposta na seguinte estrutura: crenças são as informações que o agente sabe sobre o ambiente que está inserido e sobre os agentes que estão no ambiente. Desejos são representações do que deve ser verdadeiro no ambiente, na percepção do agente. Intenções são sequências de ações que um agente executa para concluir seus objetivos, esta estrutura é apresentada na Figura \ref{fig:bdi}.
         
-		 \begin{figure}[ht]
+        \begin{figure}[ht]
             \begin{center}
                 \includegraphics[width=3.3in]{BDI.png}
             \end{center}
@@ -479,74 +465,38 @@ Sistemas multiagentes, paralelismo, arquitetura.
             \label{fig:bdi}
         \end{figure}
         
-		
-		\subsection{Sistemas Multiagentes}
-
         Os Sistemas Multiagentes (SMA) estudam o comportamento de um conjunto de agentes autônomos, eventualmente com características diferentes, evoluindo em um ambiente comum. Estes agentes podem interagir uns com os outros, com o objetivo de realizar suas tarefas de modo cooperativo, compartilhando informações, evitando conflitos e coordenando a execução de atividades \cite{alvares1997introduccao}.
         
-        \subsection{AgentSpeak}
-        A linguagem \textit{AgenkSpeak} é utilizada para especificar agentes cognitivos. Essa especificação é gerada através de um conjunto de crenças, planos, eventos que realizam a ativação e um conjunto de ações básicas que os agentes executam sobre determinado ambiente. Os programas escritos em AgenkSpeak  são interpretados de maneira semelhante á programas escritos em lógica prolog.
+        Para especificar agentes cognitivos é utilizada a linguagem \textit{AgenkSpeak}. Essa especificação é gerada através de um conjunto de crenças, planos, eventos que realizam a ativação e um conjunto de ações básicas que os agentes executam sobre determinado ambiente. Os programas escritos em AgenkSpeak  são interpretados de maneira semelhante á programas escritos em lógica prolog.      
         
-        \subsection{Jason}
-        A ferramenta Jason, do inglês (\textit{Java-based interpreter for an extented version of AgentSpeak}) consiste em um intérprete para uma versão estendida do \textit{AgentSpeak}. Ele implementa a semântica operacional da linguagem e fornece uma plataforma para o desenvolvimento de sistemas multi-agente, com muitas características de usuário personalizável. Jason está disponível \textit{Open Source} e é distribuído sob a licença GNU LGPL.
-        
-        Um SMA desenvolvido na ferramenta Jason, possui um ambiente onde os agentes estão situados e um conjunto de instâncias de agentes em \textit{AgentSpeak(L)}. O ambiente dos agentes, deve ser desenvolvido na linguagem Java. %Jason possui os seguintes recursos \cite{hubner2004introduccao}:
-        
-        
-        %\begin{itemize}
-        %\item negação forte (\textit{strong negation}), portanto é possível construir sistemas %que consideram mundo fechado (\textit{closed-world}) e mundo-aberto %(\textit{open-world});
-        %\item tratamento de falhas em planos;
-        %\item comunicação baseada em atos de fala (incluindo informações de fontes como %anotações de 
-        %crenças);
-        %\item anotações em identificadores de planos, que podem ser utilizados na elaboração %de funções personalizadas para seleção de planos;
-        %\item suporte para desenvolvimento de ambientes (que normalmente não é programado em %\textit{AgentSpeak(L)});
-        %\item possibilidade de executar o SMA distribuidamente em uma rede (usando o SACI);
-        %\item possibilidade de especificar (em Java) as funções de seleção de planos, as %funções de confiança e toda a arquitetura do agente (percepção, revisão de crenças, %comunicação e atuação);
-        %\item possui uma biblioteca básica de ações internas;
-        %\item possibilitar a extensão da biblioteca de ações internas.
-        %\end{itemize}
-        
-        A configuração do SMA é feita em arquivos com extensão .mas2j, basicamente é informado qual a arquitetura do SMA, "\textit{Centralized}" ou "Saci" (centralizado ou distribuída), qual o ambiente onde os agentes estão situados e os agentes em si. A programação dos agentes em AgentSpeak(L) é feita em arquivos com extensão .asl. %Na Figura \ref{fig:jason} pode se visualizar a estrutura de um agente na linguagem \textit{AgentSpeak} na plataforma Jason.
-        
-
-		%\begin{figure}[ht]
-        %    \begin{center}
-        %        \includegraphics[width=3.5in]{jason}
-        %    \end{center}
-        %    \caption{Estrutura de um agente em \textit{AgentSpeak} no Jason}
-        %    \label{fig:jason}
-        %\end{figure}
-        
-		%\begin{figure}[ht]
-        %    \begin{center}
-        %        \includegraphics[width=3.5in]{java}
-        %    \end{center}
-        %    \caption{Estrutura de um agente em Java}
-        %    \label{fig:java}
-        %\end{figure}
-        
-        \subsection{Jade}
-        É um framework em Java voltado para desenvolvimento de agentes. Basicamente é uma plataforma de código aberto para aplicações de agente com base em \textit{peer-to-peer}. Esse framework simplifica a implementação de sistemas multi-agente através de um \textit{middleware} que esteja em conformidade com as especificações do FIPA e através de um conjunto de ferramentas gráficas que suportam as fases de depuração e implantação. Um sistema baseado em JADE pode ser distribuído em máquinas (que não necessitam compartilhar o mesmo sistema operacional) e a configuração pode ser controlada através de uma interface gráfica (GUI). %, na Figura \ref{fig:java} visualiza-se a estrutura do agente na linguagem Java.
-        
-        Por conseguinte, o JADE promove a importante integração com o Jason a fim de prover a interação e troca de mensagens entre os agentes executados. Na Figura \ref{fig:snifer} o \textit{Agent Sniffer} ilustra  através de um diagrama a troca de mensagens entre os agentes do cenário escolhido para execução.
-        
-		 \begin{figure}[ht]
-            \begin{center}
-                \includegraphics[width=3.3in]{snifer}
-            \end{center}
-            \caption{Troca de mensagens entre agentes no JADE}
-            \label{fig:snifer}
-        \end{figure}      
-        
+    O objetivo desse artigo é analisar o tempo de execução de agentes, quando executados em computadores equipados com diferentes processadores da linha Intel Corporation. Para tal, este artigo está organizado da seguinte maneira: a Seção 2, é apresentada o estudo de caso e sua execução. Na Seção 3 são apresentados os resultados obtidos desse estudo e finalmente, a Seção 4 expõe a conclusão do trabalho.
+      
 
     \section{Estudo de Caso}
-    Nessa seção, é apresentado o cenário para realizar o estudo.
     
     O cenário escolhido para execução do estudo de caso é conhecido como o vendedor de livros. Este cenário basicamente relaciona agentes com papéis de acordo com sua finalidade.  Agentes tem papéis de vendedores e compradores de livros. 
         
     Inicialmente, cada agente comprador recebe o título do livro para comprar como um argumento de linha de comando. Periodicamente, ele envia uma mensagem á todos os agentes vendedores conhecidos para fornecer uma oferta. Assim que uma oferta é recebida, o agente comprador aceita e emite uma ordem de compra. Se mais de um agente vendedor fornece uma oferta, o agente comprador aceita a melhor, no caso a proposta que apresentar um menor preço. Quando a compra é realizada, o agente comprador finaliza a execução.
         
     Vale ressaltar, que cada agente com papel de vendedor tem uma interface gráfica mínima, por meio do qual o usuário pode inserir novos títulos com preço associado no catálogo de livros para venda. Agentes vendedores esperam continuamente por pedidos de agentes compradores e quando solicitados a fornecerem uma oferta para um livro, os vendedores verificam se o livro solicitado está em seu catálogo. Neste caso, há uma resposta com preço do livro. Caso contrário, eles se recusam. Quando recebem uma ordem de compra corretamente, o agente vendedor remove o item do catálogo e finaliza a operação.
+    
+    O código dos agentes vendedores foi desenvolvido com a ferramenta Jason, do inglês (\textit{Java-based interpreter for an extended version of AgentSpeak}) consiste em um intérprete para uma versão estendida do \textit{AgentSpeak}. Ele implementa a semântica operacional da linguagem e fornece uma plataforma para o desenvolvimento de sistemas multi-agente, com muitas características de usuário personalizável. Jason está disponível \textit{Open Source} e é distribuído sob a licença GNU LGPL.
+      
+        Um SMA desenvolvido na ferramenta Jason, possui um ambiente onde os agentes estão situados e um conjunto de instâncias de agentes em \textit{AgentSpeak(L)}. O ambiente dos agentes, deve ser desenvolvido na linguagem Java.        
+   
+        A configuração do SMA é feita em arquivos com extensão .mas2j, basicamente é informado qual a arquitetura do SMA, "\textit{Centralized}" ou "Jade" (distribuída), qual o ambiente onde os agentes estão situados e os agentes em si. A programação dos agentes em AgentSpeak(L) é feita em arquivos com extensão .asl.
+        
+        O agente comprador é executado no JADE que é um framework em Java voltado para desenvolvimento de agentes. Basicamente é uma plataforma de código aberto para aplicações de agente com base em \textit{peer-to-peer}. Esse framework simplifica a implementação de sistemas multi-agente através de um \textit{middleware} que esteja em conformidade com as especificações do FIPA e através de um conjunto de ferramentas gráficas que suportam as fases de depuração e implantação. Um sistema baseado em JADE pode ser distribuído em máquinas (que não necessitam compartilhar o mesmo sistema operacional) e a configuração pode ser controlada através de uma interface gráfica (GUI).
+        
+        Por conseguinte, o JADE promove a importante integração com o Jason a fim de prover a interação e troca de mensagens entre os agentes executados. Na Figura \ref{fig:snifer} o \textit{Agent Sniffer} ilustra  através de um diagrama a troca de mensagens entre os agentes do cenário escolhido para execução.
+        
+		 \begin{figure}[ht]
+            \begin{center}
+                \includegraphics[width=3.3in]{sniffer}
+            \end{center}
+            \caption{Troca de mensagens entre agentes no JADE}
+            \label{fig:snifer}
+        \end{figure}
     
     
     \section{Ambiente de execução}
@@ -591,55 +541,12 @@ Sistemas multiagentes, paralelismo, arquitetura.
         Os processadores utilizados no estudo de caso são componentes da empresa Intel Corporation e fazem parte de diferentes microarquiteturas. As microarquiteturas são evolutivas e apresentam algumas peculiaridades. Na Tabela \ref{tab:microarquitetura} são apresentadas as principais microarquiteturas Intel, o ano de lançamento e a litografia de cada uma.
         
         É possível observar que a cada evolução houve uma redução no tamanho da litografia, e esta redução permite um chaveamento mais rápido dos dispositivos, menor consumo de energia e maior fator de integração de dispositivos na mesma área do chip do processador. Permitindo que mais funcionalidades sejam acrescentadas \textit{on-chip}, como por exemplo mais memória cache interna.
-        
-        \begin{table}[ht]
-            \caption{Microarquiteturas Intel \cite{inteli5} \cite{inteli7}}
-            \begin{center}
-            \begin{tabular}{l|l|l}
-                \hline
-                Ano de Lançamento & Nome   & Litografia (nm) \\
-                \hline
-                2006 & Intel Core  & 80 \\
-                \hline
-                2008 & Nehalem  & 45 \\
-                \hline
-                2008 & Bonnell & 45\\
-                \hline
-                2011 & Sandy Bridge & 32\\
-                \hline
-                2013 & Haswell & 22\\
-                \hline
-                2015 & Skylake & 14\\
-                \hline
-                \end{tabular}
-            \end{center}
-            \label{tab:microarquitetura}
-        \end{table}
-                
-        Com apenas um núcleo e limitado apenas ao paralelismo a nível de instrução \textit{(ILP - Instruction Level Parallelism)} os processadores já não acompanhavam o crescimento desejado. O grande consumo de energia e a latência de memória eram obstáculos para um melhor desempenho em processadores com núcleo único utilizando o ILP. Com o surgimento de tecnologias de processadores multi-core, houve um incremento no desempenho de diversos algoritmos explorando o paralelismo a nível de \textit{thread} \textit{(TLP - Thread Level Parallelism)}.
-        
-        %\begin{figure}[ht]
-        %\centering
-        %\begin{subfigure}[b]{0.35\textwidth}
-        %\centering
-        %\includegraphics[scale=0.3]{nehalem-diagram}
-        %\caption{Nehalem \cite{nehalemb}}
-        %\label{fig: figa}
-        %\end{subfigure}
-        %\quad
-        %\begin{subfigure}[b]{0.35\textwidth}
-        %\centering
-        %\includegraphics[scale=0.3]{haswell-diagram}
-        %\caption{Haswell \cite{haswellb}}
-        %\label{fig: figb}
-        %\end{subfigure}
-        %\caption{Processadores presentes nos computadores utilizados}
-        %\label{fig:ladoalado2}
-        %\end{figure}
-        
+                  
+        Com apenas um núcleo e limitado apenas ao paralelismo a nível de instrução \textit{(ILP - Instruction Level Parallelism)} os processadores já não acompanhavam o crescimento desejado. O grande consumo de energia e a latência de memória eram obstáculos para um melhor desempenho em processadores com núcleo único utilizando o ILP. Com o surgimento de tecnologias de processadores multicore, houve um incremento no desempenho de diversos algoritmos explorando o paralelismo a nível de \textit{thread} \textit{(TLP - Thread Level Parallelism)}.
+          
         \begin{figure}[ht]
         \centering
-        \includegraphics[width=3.5in]{nehalem-diagram}
+        \includegraphics[width=2in]{nehalem-diagram}
         \caption{Microarquitetura Nehalem \cite{nehalemb}}
         \label{fig: figa}
         \end{figure}
@@ -671,79 +578,34 @@ Sistemas multiagentes, paralelismo, arquitetura.
         \label{hm}
         \end{figure}
         
-        \section{Resultados}
+                \section{Resultados}
         
         O experimento baseou-se em executar o cenário proposto de forma descentralizada promovendo uma integração entre as ferramentas Jason e Jade. As execuções realizadas alteravam a quantidade de agentes inicializados em ambas as máquinas. Para simular o cenário dos agentes inseridos, iniciou-se com apenas um agente e encerrou-se com dez mil agentes no papel de vendedores como apresentado na Tabela \ref{tab:resultadostab}. Vale ressaltar que a média e o desvio padrão foram calculados após serem executadas dez rodadas de execução por quantidade de agentes. Observa-se que a variação após um número acima de dez mil agentes, há falta de \textit{hardware} para execução, pois a memória em uso girava em torno de 3200 mb. Quando apresentou um número superior, a memória Swap era utilizada. Este fato pode ocasionar problemas de desempenho decorrente da utilização dessa memória mais lenta.
         
-        \begin{table}[ht]
-            \centering
-            \caption{Tempo de execução \textit{versus} nº de agentes}
-            \label{tab:resultadostab}
-            \begin{tabular}{|l|c|c|c|}
-            \hline
-            Processador                                              & Nº de Agentes & Tempo Médio (ms) & Desvio Padrão \\ \hline
-                                                                     & 1             & 10045            & 4,46          \\ \cline{2-4} 
-                                                                     & 2             & 10049            & 14,4          \\ \cline{2-4} 
-                                                                     & 10            & 10064            & 13,35         \\ \cline{2-4} 
-                                                                     & 50            & 10109            & 15,73         \\ \cline{2-4} 
-                                                                     & 100           & 10165            & 39,78         \\ \cline{2-4} 
-                                                                     & 200           & 10168            & 33,69         \\ \cline{2-4} 
-                                                                     & 400           & 10188            & 65,74         \\ \cline{2-4} 
-                                                                     & 600           & 10189            & 43,96         \\ \cline{2-4} 
-                                                                     & 1000          & 10191            & 32,88         \\ \cline{2-4} 
-                                                                     & 2000          & 10195            & 77,4          \\ \cline{2-4} 
-                                                                     & 5000          & 10282            & 214,38        \\ \cline{2-4} 
-            \multirow{-12}{*}{Intel Core i7}                         & 10000         & 11209            & 1034,18       \\ \hline
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 1             & 10044            & 12,55         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 2             & 10052            & 13,83         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 10            & 10084            & 25,32         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 50            & 10216            & 61,12         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 100           & 10320            & 73,89         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 200           & 10334            & 95,1          \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 400           & 10433            & 312,21        \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 600           & 10315            & 62,33         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 1000          & 10315            & 49,36         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 2000          & 10327            & 67,05         \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \cellcolor[HTML]{EFEFEF}                                 & 5000          & 10561            & 250,18        \\ \cline{2-4} 
-            \rowcolor[HTML]{EFEFEF} 
-            \multirow{-12}{*}{\cellcolor[HTML]{EFEFEF}Intel Core i5} & 10000         & 13303            & 1077,25       \\ \hline
-            \end{tabular}
-        \end{table}          
+\begin{table*}[ht]
+\centering
+\caption{Tempo de execução \textit{versus} nº de agentes}
+\label{tab:resultadostab}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|l|}{Nº de Agentes} & \multicolumn{1}{l|}{Tempo Médio i7 (ms)} & \multicolumn{1}{l|}{Tempo Médio i5 (ms)} & \multicolumn{1}{l|}{Desvio Padrão i7} & \multicolumn{1}{l|}{Desvio Pradão i5} & \multicolumn{1}{l|}{Relação Desvio Padrão i7 e i5} & \multicolumn{1}{l|}{Relação Tempo Médio i7 e i5} \\ \hline
+1                                   & 10045                                    & 10044                                    & 4,46                                  & 12,55                                 & 282\%                                              & 100,01\%                                         \\ \hline
+2                                   & 10049                                    & 10052                                    & 14,4                                  & 13,83                                 & 96\%                                               & 99,97\%                                          \\ \hline
+10                                  & 10064                                    & 10084                                    & 13,35                                 & 25,32                                 & 191\%                                              & 99,81\%                                          \\ \hline
+50                                  & 10109                                    & 10216                                    & 15,73                                 & 61,12                                 & 391\%                                              & 98,95\%                                          \\ \hline
+100                                 & 10165                                    & 10320                                    & 39,78                                 & 73,89                                 & 185\%                                              & 98,50\%                                          \\ \hline
+200                                 & 10168                                    & 10334                                    & 33,69                                 & 95,1                                  & 282\%                                              & 98,40\%                                          \\ \hline
+400                                 & 10188                                    & 10433                                    & 65,74                                 & 312,21                                & 474\%                                              & 97,65\%                                          \\ \hline
+600                                 & 10189                                    & 10315                                    & 43,96                                 & 62,33                                 & 141\%                                              & 98,78\%                                          \\ \hline
+1000                                & 10191                                    & 10315                                    & 32,88                                 & 49,36                                 & 150\%                                              & 98,80\%                                          \\ \hline
+2000                                & 10195                                    & 10327                                    & 77,4                                  & 67,05                                 & 86\%                                               & 98,73\%                                          \\ \hline
+5000                                & 10282                                    & 10561                                    & 214,38                                & 250,18                                & 116\%                                              & 97,36\%                                          \\ \hline
+10000                               & 11209                                    & 13303                                    & 1034,18                               & 1077,25                               & 104\%                                              & 84,26\%                                          \\ \hline
+\end{tabular}
+\end{table*}        
         
-        A Tabela \ref{tab:relacao} apresenta o quão estável estão os desvios padrões apresentados comparando os processadores Intel i7 e i5 nos testes com o mesmo número de agentes. No caso, quanto mais próximos de 100\% mais estável é a comparação. Isso serve para mostrar que, apesar do desvio padrão próximo 1000, quando existem 10000 agentes isso não é causado por falha de execução da pesquisa. O valor de 104\% indica que deve ser uma falha no próprio sistema em gerenciar tantos agentes, gerando assim uma variação muito alta no tempo das execuções.
+        A coluna Relação Desvio Padrão i7 e i5 da Tabela \ref{tab:resultadostab} apresenta o quão estável estão os desvios padrões apresentados comparando os processadores Intel i7 e i5 nos testes com o mesmo número de agentes. No caso, quanto mais próximos de 100\% mais estável é a comparação. Isso serve para mostrar que, apesar do desvio padrão próximo 1000, quando existem 10000 agentes isso não é causado por falha de execução da pesquisa. O valor de 104\% indica que deve ser uma falha no próprio sistema em gerenciar tantos agentes, gerando assim uma variação muito alta no tempo das execuções.
         
-        \begin{table}[ht]
-            \centering
-            \caption{Relação Desvio Padrão i7 e i5}
-            \label{tab:relacao}
-            \begin{tabular}{|c|c|}
-                \hline
-                Nº de Agentes & Relação Desvio Padrão i7 e i5 \\ \hline
-                1             & 282\%                         \\ \hline
-                2             & 96\%                          \\ \hline
-                10            & 191\%                         \\ \hline
-                50            & 391\%                         \\ \hline
-                100           & 185\%                         \\ \hline
-                200           & 282\%                         \\ \hline
-                400           & 474\%                         \\ \hline
-                600           & 141\%                         \\ \hline
-                1000          & 150\%                         \\ \hline
-                2000          & 86\%                          \\ \hline
-                5000          & 116\%                         \\ \hline
-                10000         & 104\%                         \\ \hline
-            \end{tabular}
-        \end{table}
         
         Na Figura \ref{grafico} apresenta-se o gráfico gerado com os dados obtidos. É possível observar que o desempenho da arquitetura i7 é superior ao da arquitetura i5, apresentando tempos inferiores em quase todos os casos estudados. Em ambientes com até 50 agentes, as duas arquiteturas apresentaram comportamento semelhante. Isso é relevante para destacar que, para situações com poucos agentes, a arquitetura i5 pode ser explorada com resultados adequados de desempenho. Entretanto, um número de 10.000 agentes executando há um aumento significativo no tempo de execução. O tempo de execução na arquitetura i7 é praticamente constante quando aumenta-se o número de agentes até o limite de 10000, onde observa-se um aumento no tempo de execução considerável. Pois, apesar da evolução na linha de processadores i5 e i7, a arquitetura i5 ainda é menos poderosa em desempenho quando executada no contexto com vários agentes.
         
