@@ -73,11 +73,12 @@
 \usepackage{hyperref} 
 \renewcommand{\figurename}{Figura}
 \renewcommand{\tablename}{Tabela}
-
+\usepackage{natbib}
 %\IEEEoverridecommandlockouts
 \usepackage{multirow}
 \usepackage{float}
 \usepackage[table,xcdraw]{xcolor}
+
 % Add the compsoc option for Computer Society conferences.
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
@@ -132,11 +133,6 @@
 % The latest version can be obtained at:
 % http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
 % The documentation is contained in the cite.sty file itself.
-
-
-
-
-
 
 % *** GRAPHICS RELATED PACKAGES ***
 %
@@ -366,7 +362,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{ESTUDO DE DESEMPENHO DE EXECUÇÃO DE AGENTES EM PROCESSADORES MULTICORE}
+\title{ESTUDO DE DESEMPENHO DE AGENTES EM PROCESSADORES MULTICORE}
 
 
 % author names and affiliations
@@ -415,7 +411,7 @@ Rio Grande - Brasil\\
 
 \begin{abstract}
 %\boldmath
-Processadores multicore são bastante comuns em computadores e até mesmo em \textit{smartphones} trazendo maior agilidade para os mais diversos \textit{softwares} utilizados no nosso dia-a-dia. Tendo em vista que um ambiente computacional baseado em agentes pode tornar-se muito complexo quando se tem um grande número de agentes, ou regras muito complexas, a execução em paralelo disponibilizada pelos processadores \textit{multicore} pode ser uma boa alternativa para melhorar o desempenho, reduzindo o tempo de resposta. Frente a este desafio, este artigo apresenta um estudo de caso sobre o tempo de execução de um algoritmo voltado a sistema multiagentes em diferentes processadores da linha Intel Core.
+Processadores multicore são bastante comuns em computadores e até mesmo em \textit{smartphones} trazendo maior agilidade para os mais diversos \textit{softwares} utilizados no dia-a-dia. Levando em consideração que um ambiente computacional baseado em agentes pode tornar-se muito complexo quando há um grande número de agentes ou regras muito complexas envolvidas, a execução em paralelo disponibilizada pelos processadores multicore pode ser uma boa alternativa para melhorar o desempenho, reduzindo o tempo de resposta. Frente a este desafio, este artigo apresenta um estudo de caso sobre o tempo de execução de um algoritmo voltado a sistemas multiagente em diferentes processadores da linha Intel Core.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -426,7 +422,7 @@ Processadores multicore são bastante comuns em computadores e até mesmo em \te
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Sistemas multiagentes, paralelismo, arquitetura.
+Sistemas multiagente, paralelismo, arquitetura.
 \end{IEEEkeywords}
 
 
@@ -447,14 +443,14 @@ Sistemas multiagentes, paralelismo, arquitetura.
 
 
 \section{Introdução}
+
+
     \IEEEPARstart{C}{om} o aumento na demanda da tecnologia é cada vez maior, a necessidade de um melhor \textit{hardware} para execução de tarefas complexas. Processador, memória e conjunto de instruções são alguns exemplos neste \textit{upgrade} que os sistemas computacionais requerem para um melhor processamento e execução de tarefas.
         
     Sistemas de \textit{softwares} baseados em agentes são utilizados em um grande número de aplicações, sendo seu domínio altamente dinâmico \cite{evertsz2015using}. Como por exemplo, na robótica, na fabricação automatizada, na gestão financeira, entre outros. Segundo \cite{ferber1991tutorial}, um agente é uma entidade real ou virtual, imersa num ambiente onde é capaz de agir, que dispõe de uma capacidade de percepção e de representação parcial deste ambiente, que pode se comunicar com outros agentes, possuindo um comportamento autônomo, consequência de suas observações, de seu conhecimento e das suas interações com os outros agentes.
         
-        Em \cite{bellifemine2007developing} é definido que um agente é autônomo por atuar sem intervenção direta, tem o controle de suas ações, ele é social por cooperar com seres humanos e outros agentes a fim de alcançar os seus objetivos e um agente é reativo porque ele percebe seu ambiente e responde a estes estímulos que ocorrem em seu entorno. Em resumo, as principais características de um agente é a percepção de seu ambiente, possuir um conjunto de ações que podem ser executadas podendo assim modificar o ambiente \cite{bordini2007programming}.
-        
+    Em \cite{bellifemine2007developing} é definido que um agente é autônomo por atuar sem intervenção direta, tem o controle de suas ações, ele é social por cooperar com seres humanos e outros agentes a fim de alcançar os seus objetivos e um agente é reativo porque ele percebe seu ambiente e responde a estes estímulos que ocorrem em seu entorno. Em resumo, as principais características de um agente é a percepção de seu ambiente, possuir um conjunto de ações que podem ser executadas podendo assim modificar o ambiente \cite{bordini2007programming}.    
         Os agentes podem ser divididos em duas categorias: reativos e cognitivos. Agentes reativos possuem comportamentos simples, não possuindo nenhum modelo do mundo onde estão atuando e possuem comportamento estímulo-resposta. Agentes cognitivos possuem comportamentos complexos onde eles deliberam e negociam suas ações com os outros agentes. Uma das arquiteturas cognitivas de agentes é conhecido como BDI (\textit{beliefs}, \textit{desires} e \textit{intentions}), no português: as crenças, os desejos e as intenções. Especificamente, essa arquitetura surgiu por volta da década de 80, com base na teoria do filósofo Michael Bratman \cite{sichman2003raciocinio}.
-
         Essa arquitetura é proposta na seguinte estrutura: crenças são as informações que o agente sabe sobre o ambiente que está inserido e sobre os agentes que estão no ambiente. Desejos são representações do que deve ser verdadeiro no ambiente, na percepção do agente. Intenções são sequências de ações que um agente executa para concluir seus objetivos, esta estrutura é apresentada na Figura \ref{fig:bdi}.
         
         \begin{figure}[ht]
@@ -466,7 +462,6 @@ Sistemas multiagentes, paralelismo, arquitetura.
         \end{figure}
         
         Os Sistemas Multiagentes (SMA) estudam o comportamento de um conjunto de agentes autônomos, eventualmente com características diferentes, evoluindo em um ambiente comum. Estes agentes podem interagir uns com os outros, com o objetivo de realizar suas tarefas de modo cooperativo, compartilhando informações, evitando conflitos e coordenando a execução de atividades \cite{alvares1997introduccao}.
-        
         Para especificar agentes cognitivos é utilizada a linguagem \textit{AgenkSpeak}. Essa especificação é gerada através de um conjunto de crenças, planos, eventos que realizam a ativação e um conjunto de ações básicas que os agentes executam sobre determinado ambiente. Os programas escritos em AgenkSpeak  são interpretados de maneira semelhante á programas escritos em lógica prolog.      
         
     O objetivo desse artigo é analisar o tempo de execução de agentes, quando executados em computadores equipados com diferentes processadores da linha Intel Corporation. Para tal, este artigo está organizado da seguinte maneira: a Seção 2, é apresentada o estudo de caso e sua execução. Na Seção 3 são apresentados os resultados obtidos desse estudo e finalmente, a Seção 4 expõe a conclusão do trabalho.
@@ -752,8 +747,8 @@ Sistemas multiagentes, paralelismo, arquitetura.
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\bibliographystyle{IEEEtran}
-\bibliography{IEEE, referencias}
+\bibliographystyle{abbrv}
+\bibliography{referencias}
 
 % biography section
 % 
